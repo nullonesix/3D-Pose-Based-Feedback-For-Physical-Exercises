@@ -145,7 +145,7 @@ def main(opt, model_version):
 
     # Test  
     model = models[model_version]
-    model.load_state_dict(torch.load(opt.model_dir))
+    model.load_state_dict(torch.load(opt.model_dir, map_location='cuda:0'))
     model.cuda()
 
     with torch.no_grad():
