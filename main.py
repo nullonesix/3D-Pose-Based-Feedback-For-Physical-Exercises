@@ -217,7 +217,7 @@ def main(opt, model_version):
 
 
 if __name__ == "__main__":
-    torch.cuda.set_device(3)
+    torch.cuda.set_device(0)
     print('GPU Index: {}'.format(torch.cuda.current_device()))
     
     model_options = ['Separated_Classifier_Simple', 'Separated_Classifier', 'Separated_Corrector', 'Combined_wo_Feedback', 'Ours']
