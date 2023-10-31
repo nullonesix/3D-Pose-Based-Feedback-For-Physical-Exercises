@@ -39,8 +39,8 @@ def main_eval(time, opt, data_test, separated=False, model_version=''):
         model_class = GCN_corr_class_ours(hidden_feature=256, p_dropout=opt.dropout, classes=12).cuda()   #  best classifier 
         
         # Load parameters
-        model_corr.load_state_dict(torch.load(model_corr_path))
-        model_class.load_state_dict(torch.load(model_class_path))
+        model_corr.load_state_dict(torch.load(model_corr_path, map_location='cuda:0'))
+        model_class.load_state_dict(torch.load(model_class_path, map_location='cuda:0'))
 
         model_id = model_corr_path[-19:-3] if model_corr_path[0] != 'p' else 'pretrained'
         if is_cuda:
@@ -54,7 +54,7 @@ def main_eval(time, opt, data_test, separated=False, model_version=''):
         model_path = opt.model_dir
         # import pdb; pdb.set_trace()
         # model.load_state_dict(torch.load(model_path))
-        model.load_state_dict(torch.load(opt.model_dir))
+        model.load_state_dict(torch.load(opt.model_dir, map_location='cuda:0'))
 
         model_id = model_path[-19:-3] if model_path[0] != 'p' else 'pretrained'
 
